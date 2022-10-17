@@ -206,3 +206,6 @@ button[type] {
     margin-right: auto;
     border-spacing: 0px;
 }
+#but-add-contact{
+    display:none;
+}

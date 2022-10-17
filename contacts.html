@@ -25,8 +25,28 @@
   <script type="text/javascript">
     $(document).ready(function() {
         $('#table-body').load('/cgi-bin/main.pl');
+        if (getCookie('login') != '') {
+          document.getElementById('but-add-contact').style.display='block';
+        }
     });
   </script>
+  <script>
+    function getCookie(cname) {
+        let name = cname + "=";
+        let ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+</script>
+
 </head>
 
 <body>
@@ -71,7 +91,7 @@
     </div> -->
       <!-- content -->
 
-      <button id="but-add-contact" type="button" onclick="AddContact()" class="add-contact">Add Contact</button>
+      <button id="but-add-contact" type="button" onclick="AddContact()" class="add-contact" >Add Contact</button>
       <table id='table-body' class="table2">
 
         

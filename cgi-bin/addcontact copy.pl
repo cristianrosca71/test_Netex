@@ -15,8 +15,11 @@ use Data::Dumper;
 use DBI;
 use CGI::Carp; # send errors to the browser, not to the logfile
 use File::Basename;
- 
 
+#use CGI::Carp::DebugScreen::Dumper;
+ 
+# if you want to poke into further
+#CGI::Carp::DebugScreen::Dumper->ignore_overload(1);
 my %App;
 my $app = \%App;
 
@@ -33,28 +36,51 @@ my $address	        = $cgi->param("address");
 my $uploadfile      = $cgi->param("uploadfile");
 
 my $encryptfile;
-
+my $upload_dir = "C:/xampp/htdocs/contacts_address_book/photos";
 
 $uploadfile =~s/C:\\fakepath\\/D:\\Projects\\Perl_Projects\\Project_contacts\\photos\\/;
-my $file = $uploadfile;
-my $dir = "C:\\xampp\\htdocs\\contacts_address_book\\photos";
+my $filename = $uploadfile;
 
-$file=~m/^.*(\\|\/)(.*)/;
-# strip the remote path and keep the filename
-my $name = $2;
-print STDERR "$name";
-open(LOCAL, ">$dir/$name") or print 'error';
-my $file_handle = $cgi->upload("uploadfile");     # get the handle, not just the filename
-binmode LOCAL;
-while(<$file_handle>) {               # use that handle    
-    print LOCAL;
- }
- close($file_handle);                        # clean the mess
- close(LOCAL);                               # 
- print $cgi->header();
- print $dir/$name;
- print "$file has been successfully uploaded... thank you.\n";
+$CGI::POST_MAX = 1024 * 5000;
+my $safe_filename_characters = "a-zA-Z0-9_.-";
 
+
+my $query = new CGI;
+#my $filename = $query->param("photo");
+#my $email_address = $query->param("email_address");
+
+if ( !$filename )
+{
+print $query->header ( );
+print "There was a problem uploading your photo (try a smaller file).";
+exit;
+}
+
+my ( $name, $path, $extension ) = fileparse ( $filename, '..*' );
+$filename = $name . $extension;
+$filename =~ tr/ /_/;
+$filename =~ s/[^$safe_filename_characters]//g;
+
+if ( $filename =~ /^([$safe_filename_characters]+)$/ )
+{
+$filename = $1;
+}
+else
+{
+die "Filename contains invalid characters";
+}
+
+my $upload_filehandle = $query->upload("$filename");
+
+open ( UPLOADFILE, ">$upload_dir/$filename" ) or die "$!";
+binmode UPLOADFILE;
+
+while ( <$upload_filehandle> )
+{
+print UPLOADFILE;
+}
+
+close UPLOADFILE;
 
 
 

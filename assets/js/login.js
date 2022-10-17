@@ -27,6 +27,10 @@ $(document).ready(function(){
             }//if
             else {//login was successful
               $('div#login-form').hide();
+              const d = new Date();
+              d.setTime(d.getTime() + (24*60*60*1000));
+              let expires = "expires="+ d.toUTCString();
+              document.cookie = 'login' + "=" + data.userid + ";" + expires + ";path=/";
               $('div#loginResult').text( data.success 
                 + ", data.userid: " + data.userid);
               $('div#loginResult').addClass("success");
@@ -42,3 +46,4 @@ $(document).ready(function(){
       return false;
     });
   });
+  
