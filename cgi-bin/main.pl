@@ -28,7 +28,7 @@ my $html_contacts_rows;
 # Create List of contacts
 for my $c ( sort { $a <=> $b } keys %{ $app->{CONTACTS} } ) {
     $html_contacts_rows .= qq(    
-                <tr style="color: beige; background: darkcyan;">
+                <tr style="color: beige; background: #021528; opacity: .7;">
                   <td class="middle">
                     <div class="media-left">
                       <a href="#">
@@ -47,7 +47,7 @@ for my $c ( sort { $a <=> $b } keys %{ $app->{CONTACTS} } ) {
                   </td>
                   <td width="100" class="middle">
                     <div>
-                      <a href="#" class="button-edit" title="Edit"> <img src="../img/edit.png">
+                      <a href="#" class="button-edit" title="Edit"> <img src="../img/edit.jpg">
                         
                       </a>
                       <a href="#" class="button-delete" title="Delete"> <img src="../img/delete.png">
@@ -79,7 +79,7 @@ print $cgi->header('text/html');
 
 
 $html .= qq(
-               <tr style="color: beige; background: darkcyan;">
+               <tr style="color: beige; background: #021528;">
                 <td></td>
                 <td></td>
                 <td>
