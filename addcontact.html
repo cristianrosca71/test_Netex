@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>seek coding</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="assets/js/addcontact.js"></script>
+    <!---we had linked our css file----->
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div class="navbar-brand">
+                <a class="navbar-brand" href="#"><img src="img/logo2.jpg" height="60"></a>
+                <!--<a href='#'>In Touch</a>-->
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/index.html'>Home</a></li>
+                    <li><a href='/contacts.html'>Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+		<div id="loginResult" style="display:none;"></div>
+        <div id="form-add-contact" class="form-add-contact">
+            <div class="form-box">
+              <form id='addcontact' method="post" class='input-group-register'>
+                <input type='text' id="first" class='input-field' placeholder='First Name' required>
+                <input type='text' id="last" class='input-field' placeholder='Last Name ' required>
+                <input type='email' id="emailc" class='input-field' placeholder='Email Id' required>
+                <input type='text' id="address" class='input-field' placeholder='Address' required>
+                <input type='file' id="uploadfile" class='input-field' placeholder='Upload Photo'>
+                <button type='submit' class='submit-btn'  >Add Contact</button>
+                </form>
+        
+            </div>
+          </div>
+      
+    </div>
+
+	<style type="text/css">
+
+	</style>
+		<!--#loginContent { width: 350px; margin: 100px auto; }-->
+
+</body>
+</html>

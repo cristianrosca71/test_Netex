@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>seek coding</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="assets/js/login.js"></script>
+	<script type="text/javascript" src="assets/js/register.js"></script>
+    <script type="text/javascript" src="assets/js/validation.js"></script>
+    <!---we had linked our css file----->
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div class="navbar-brand">
+                <a class="navbar-brand" href="#"><img src="img/logo2.jpg" height="60"></a>
+                <!--<a href='#'>In Touch</a>-->
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/index.html'>Home</a></li>
+                    <li><a href='/contacts.html'>Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+		<div id="loginResult" style="display:none;"></div>
+        <div id='login-form' class='login-page'>			
+            <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button'onclick='login()' class='toggle-btn'>Log In</button>
+                    <button type='button'onclick='register()' class='toggle-btn'>Register</button>
+                </div>
+                <form id='login' method="post" class='input-group-login'>
+                    <input type='text' id="username" class='input-field' placeholder='Email Id' required >
+		    		<input type='password' id="password" class='input-field' placeholder='Enter Password' required>
+		    		<input type='checkbox'class='check-box'><span>Remember Password</span>
+		    		<button type='submit' class='submit-btn'>Log in</button>
+		 		</form>
+				<form id='register' method="post" class='input-group-register'>
+					<input type='text' id="firstname" class='input-field' placeholder='First Name' required>
+					<input type='text' id="lastname" class='input-field' placeholder='Last Name ' required>
+					<input type='email' id="email" class='input-field' placeholder='Email Id' required>
+					<input type='password' id="addpassword" class='input-field' placeholder='Enter Password' required>
+					<input type='password' id="confirmpassword" class='input-field' placeholder='confirm Password'  required>
+					<div id="pass-err" class="error-valid" style="display: none;"></div>
+					<input type='checkbox' class='check-box'><span>I agree to the terms and conditions</span>
+                    <button type='submit' class='submit-btn'  onclick="return Validate()">Register</button>
+	        	</form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var x=document.getElementById('login');
+		var y=document.getElementById('register');
+		var z=document.getElementById('btn');
+		function register()
+		{
+			x.style.left='-400px';
+			y.style.left='50px';
+			z.style.left='110px';
+		}
+		function login()
+		{
+			x.style.left='50px';
+			y.style.left='450px';
+			z.style.left='0px';
+		}
+	</script>
+
+	<!--- if you click out of the login or registration page - the form
+	<script>
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event) 
+        {
+            if (event.target == modal) 
+            {
+				modal.style.display = "none";
+            }
+        }
+    </script>
+			--->
+	<style type="text/css">
+
+	</style>
+		<!--#loginContent { width: 350px; margin: 100px auto; }-->
+
+</body>
+</html>
